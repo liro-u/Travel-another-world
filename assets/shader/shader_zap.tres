@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float speed=5.0;
+
+uniform vec2 amplitude=vec2(0.25 , 0.5);
+
+
+
+void vertex(){
+	VERTEX.y += sin(TIME*speed + VERTEX.y + VERTEX.x) * amplitude.y;
+	VERTEX.x += cos(TIME*speed + VERTEX.x) * amplitude.x;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/speed = 5.0
+shader_param/amplitude = Vector2( 0.25, 0.5 )

@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="HSeparator2" type="HSeparator"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 4.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}

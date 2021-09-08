@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=2]
+
+[ext_resource path="res://assets/background/city_vegetation_1/front/front_1/frame0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/background/city_vegetation_1/front/front_2/frame0000.png" type="Texture" id=9]
+[ext_resource path="res://assets/background/city_vegetation_1/front/front_3/frame0000.png" type="Texture" id=13]
+[ext_resource path="res://assets/background/city_vegetation_1/front/front_4/frame0000.png" type="Texture" id=28]
+[ext_resource path="res://assets/background/city_vegetation_1/front/front_5/frame0000.png" type="Texture" id=35]
+[ext_resource path="res://assets/background/city_vegetation_1/front/front_6/frame0000.png" type="Texture" id=38]
+[ext_resource path="res://assets/background/city_vegetation_1/front/front_7/frame0000.png" type="Texture" id=40]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "New Anim 2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": true,
+"name": "New Anim 4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 40 ) ],
+"loop": true,
+"name": "New Anim 5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 35 ) ],
+"loop": true,
+"name": "New Anim 3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "New Anim 1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+} ]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/background/city_vegetation_1/transition/transitions.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Script/background/BackgroundPannel.gd" type="Script" id=2]
+
+[node name="BackgroundPannel" type="Node2D" groups=[
+"animated",
+"backgroundPannel",
+]]
+position = Vector2( 0, -30 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SpriteBackgroundPannel" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "start"
+frame = 6
+playing = true
+centered = false
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 10, 10 )
+rect = Rect2( -10, -10, 1024, 600 )
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

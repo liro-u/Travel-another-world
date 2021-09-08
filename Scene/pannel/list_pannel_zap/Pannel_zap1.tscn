@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scene/pannel/zap/zap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Script/pannel/Pannel.gd" type="Script" id=2]
+
+[node name="Pannel" type="Node2D" groups=[
+"pannel",
+]]
+script = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+rect = Rect2( 0, 0, 600, 600 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="zap" parent="." instance=ExtResource( 1 )]
+position = Vector2( 304, 367 )
+rotation = 1.5708
+cast_to = Vector2( 200, 0 )
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

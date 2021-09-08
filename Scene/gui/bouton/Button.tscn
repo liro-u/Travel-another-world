@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Script/bouton/Button_size_fondu.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/aAssassinNinja.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/background/transition/front/void/frame1.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 2.08409, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = ExtResource( 2 )
+
+[node name="Button" type="TextureButton"]
+margin_left = 287.0
+margin_top = 99.0
+margin_right = 737.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 450, 100 )
+texture_normal = ExtResource( 3 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+courbe = SubResource( 1 )
+groupe = "menu"
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

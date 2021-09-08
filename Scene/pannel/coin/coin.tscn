@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/pannel/coin/piece.png" type="Texture" id=1]
+[ext_resource path="res://assets/pannel/coin/rubis.png" type="Texture" id=2]
+[ext_resource path="res://Script/pannel/coin/coin.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "coin",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "rubi",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 14.5129
+height = 7.98779
+
+[node name="coin" type="Area2D" groups=[
+"animated",
+]]
+collision_layer = 4
+script = ExtResource( 3 )
+unSurXchanceRubis = 30
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.3303, 1.62966 )
+frames = SubResource( 1 )
+animation = "coin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_coin_body_entered"]

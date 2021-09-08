@@ -1,0 +1,512 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Script/gui/compteur.gd" type="Script" id=1]
+[ext_resource path="res://Script/gros package/fix_GUI.gd" type="Script" id=2]
+[ext_resource path="res://assets/gui/button/button_musique.png" type="Texture" id=3]
+[ext_resource path="res://Scene/gui/scrolltxt/les mission.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/gui/button/button_unpause.png" type="Texture" id=5]
+[ext_resource path="res://assets/gui/coin/piece.png" type="Texture" id=6]
+[ext_resource path="res://Scene/gui/scrolltxt/scroll_text_box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/font/aAssassinNinja.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/gui/pause_button/pause_button.png" type="Texture" id=9]
+[ext_resource path="res://assets/gui/button/button_restart.png" type="Texture" id=10]
+[ext_resource path="res://assets/gui/button/button_home.png" type="Texture" id=11]
+[ext_resource path="res://assets/gui/button/button_son.png" type="Texture" id=12]
+[ext_resource path="res://Scene/gui/bouton/ButtonWarning.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Script/gui/score_show.gd" type="Script" id=14]
+[ext_resource path="res://assets/font/score_font.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Scene/gui/shake_label.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/gui/death_menu/revive_ad.png" type="Texture" id=17]
+[ext_resource path="res://assets/gui/death_menu/revive_coin.png" type="Texture" id=18]
+[ext_resource path="res://Scene/gui/bouton/basic_button.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Script/gui/global coin.gd" type="Script" id=20]
+[ext_resource path="res://assets/gui/button/button_son_off.png" type="Texture" id=21]
+[ext_resource path="res://assets/gui/button/button_musique_off.png" type="Texture" id=22]
+[ext_resource path="res://assets/gui/button/button_restart_pressed.png" type="Texture" id=23]
+[ext_resource path="res://assets/gui/button/button_home_pressed.png" type="Texture" id=24]
+[ext_resource path="res://assets/gui/button/button_unpause_pressed.png" type="Texture" id=25]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="InputEventKey" id=2]
+pressed = true
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="InputEventKey" id=4]
+device = -1
+pressed = true
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 50
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 70
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[node name="fix_GUI" type="CanvasLayer"]
+script = ExtResource( 2 )
+node_on_top_task_path = NodePath("pause menu global/CenterContainer/pause_menu/grille bouton mission/les mission/MarginContainer/ScrollContainer/VBoxContainer/HSeparator2")
+task_node = ExtResource( 7 )
+
+[node name="GUI" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -512.0
+margin_right = 512.0
+margin_bottom = 600.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="compteur" type="VBoxContainer" parent="GUI/HBoxContainer"]
+margin_right = 956.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+
+[node name="metre" type="HBoxContainer" parent="GUI/HBoxContainer/compteur"]
+margin_right = 956.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="GUI/HBoxContainer/compteur/metre"]
+margin_right = 16.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="Label2" type="Label" parent="GUI/HBoxContainer/compteur/metre"]
+margin_left = 20.0
+margin_right = 46.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 1 )
+text = "m"
+
+[node name="coin" type="Node2D" parent="GUI/HBoxContainer/compteur"]
+position = Vector2( 0, 34 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="piece" type="HBoxContainer" parent="GUI/HBoxContainer/compteur/coin"]
+margin_right = 87.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI/HBoxContainer/compteur/coin/piece"]
+margin_right = 16.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI/HBoxContainer/compteur/coin/piece"]
+margin_left = 20.0
+margin_right = 20.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="GUI/HBoxContainer/compteur/coin/piece/CenterContainer"]
+position = Vector2( 0, -10 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="coin" type="TextureRect" parent="GUI/HBoxContainer/compteur/coin/piece/CenterContainer/Node2D"]
+margin_right = 25.0
+margin_bottom = 30.0
+texture = ExtResource( 6 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause" type="TextureButton" parent="GUI/HBoxContainer"]
+margin_left = 960.0
+margin_right = 984.0
+margin_bottom = 24.0
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+shortcut = SubResource( 3 )
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="compteur" type="CenterContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="compteur"]
+
+[node name="pause menu global" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="pause menu global"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.74902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="pause menu global"]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause_menu" type="Control" parent="pause menu global/CenterContainer"]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 824.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 624, 400 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grille bouton mission" type="VBoxContainer" parent="pause menu global/CenterContainer/pause_menu"]
+margin_right = 624.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 624, 400 )
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="les mission" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission" instance=ExtResource( 4 )]
+node_list_task_path = "../../../../../../list_task"
+
+[node name="button" type="HBoxContainer" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission"]
+margin_top = 325.0
+margin_right = 624.0
+margin_bottom = 400.0
+
+[node name="audio" type="HBoxContainer" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission/button"]
+margin_right = 375.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="son" type="TextureButton" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/audio"]
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 21 )
+expand = true
+
+[node name="musique" type="TextureButton" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/audio"]
+margin_left = 85.0
+margin_right = 160.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 22 )
+expand = true
+
+[node name="partie" type="HBoxContainer" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission/button"]
+margin_left = 379.0
+margin_right = 624.0
+margin_bottom = 75.0
+custom_constants/separation = 10
+
+[node name="unpause" type="TextureButton" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/partie"]
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+shortcut = SubResource( 5 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 25 )
+expand = true
+
+[node name="restart" type="TextureButton" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/partie"]
+margin_left = 85.0
+margin_right = 160.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 23 )
+expand = true
+
+[node name="menu" type="TextureButton" parent="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/partie"]
+margin_left = 170.0
+margin_right = 245.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 24 )
+expand = true
+
+[node name="death_menu" type="Control" parent="."]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="death_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="death_menu/CenterContainer"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Control" type="Control" parent="death_menu/CenterContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1024, 600 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health" type="Control" parent="death_menu/CenterContainer"]
+visible = false
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="global coin" type="HBoxContainer" parent="death_menu/CenterContainer/health"]
+margin_left = -523.632
+margin_top = -350.725
+margin_right = 500.368
+margin_bottom = -300.725
+rect_min_size = Vector2( 1024, 0 )
+alignment = 2
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+max_pos = -280
+min_pos = -347
+speed = 200
+
+[node name="nbr" type="Label" parent="death_menu/CenterContainer/health/global coin"]
+margin_left = 844.0
+margin_right = 980.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 6 )
+text = "25070"
+
+[node name="TextureRect" type="TextureRect" parent="death_menu/CenterContainer/health/global coin"]
+margin_left = 984.0
+margin_right = 1024.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="health" type="HBoxContainer" parent="death_menu/CenterContainer/health"]
+margin_left = -275.0
+margin_top = -100.0
+margin_right = 275.0
+margin_bottom = 100.0
+custom_constants/separation = 150
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_by_add" parent="death_menu/CenterContainer/health/health" instance=ExtResource( 13 )]
+margin_bottom = 200.0
+texture = ExtResource( 17 )
+
+[node name="Label" type="Label" parent="death_menu/CenterContainer/health/health/health_by_add/button warning" index="0"]
+margin_left = 49.0833
+margin_top = 195.137
+margin_right = 247.083
+margin_bottom = 231.137
+rect_rotation = -25.1119
+custom_fonts/font = SubResource( 7 )
+text = "coming soon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_by_coin" parent="death_menu/CenterContainer/health/health" instance=ExtResource( 13 )]
+margin_left = 350.0
+margin_right = 550.0
+margin_bottom = 200.0
+texture = ExtResource( 18 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="death_menu/CenterContainer/health/health/health_by_coin/button warning" index="0"]
+margin_left = 88.5686
+margin_top = 190.966
+margin_right = 224.569
+margin_bottom = 240.966
+rect_rotation = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cost" type="Label" parent="death_menu/CenterContainer/health/health/health_by_coin/button warning/HBoxContainer"]
+margin_right = 82.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 8 )
+text = "1 000"
+
+[node name="piece" type="TextureRect" parent="death_menu/CenterContainer/health/health/health_by_coin/button warning/HBoxContainer"]
+margin_left = 86.0
+margin_right = 136.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="score" type="HBoxContainer" parent="death_menu/CenterContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 216.0
+margin_top = 265.0
+margin_right = 808.0
+margin_bottom = 335.0
+script = ExtResource( 14 )
+speed = 300
+
+[node name="Timer" type="Timer" parent="death_menu/CenterContainer/score"]
+one_shot = true
+
+[node name="hight score" type="Label" parent="death_menu/CenterContainer/score"]
+margin_right = 424.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 9 )
+text = "Higth Score : "
+
+[node name="Switch" type="Label" parent="death_menu/CenterContainer/score"]
+margin_left = 428.0
+margin_right = 592.0
+margin_bottom = 70.0
+rect_clip_content = true
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 0 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0 )
+text = "9999"
+
+[node name="list_score" type="VBoxContainer" parent="death_menu/CenterContainer/score/Switch"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -72.0
+margin_right = 1.52588e-05
+margin_bottom = 2.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameScore" parent="death_menu/CenterContainer/score/Switch/list_score" instance=ExtResource( 16 )]
+
+[node name="HGScore" parent="death_menu/CenterContainer/score/Switch/list_score" instance=ExtResource( 16 )]
+margin_top = 74.0
+margin_bottom = 144.0
+text = "9090"
+
+[node name="button" type="HBoxContainer" parent="death_menu/CenterContainer"]
+visible = false
+margin_left = 237.0
+margin_top = 200.0
+margin_right = 787.0
+margin_bottom = 400.0
+custom_constants/separation = 150
+
+[node name="retry" parent="death_menu/CenterContainer/button" instance=ExtResource( 19 )]
+margin_right = 200.0
+margin_bottom = 200.0
+texture = ExtResource( 10 )
+
+[node name="menu" parent="death_menu/CenterContainer/button" instance=ExtResource( 19 )]
+margin_left = 350.0
+margin_right = 550.0
+margin_bottom = 200.0
+texture = ExtResource( 11 )
+[connection signal="pressed" from="GUI/HBoxContainer/pause" to="." method="_on_pause_pressed"]
+[connection signal="timeout" from="compteur/Timer" to="compteur" method="_on_Timer_timeout"]
+[connection signal="toggled" from="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/audio/son" to="." method="_on_son_toggled"]
+[connection signal="toggled" from="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/audio/musique" to="." method="_on_musique_toggled"]
+[connection signal="pressed" from="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/partie/unpause" to="compteur" method="_on_unpause_pressed"]
+[connection signal="pressed" from="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/partie/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="pause menu global/CenterContainer/pause_menu/grille bouton mission/button/partie/menu" to="." method="_on_menu_pressed"]
+[connection signal="timeout" from="death_menu/CenterContainer/Timer" to="." method="show_death_button"]
+[connection signal="gui_input" from="death_menu/CenterContainer/Control" to="." method="_on_Control_gui_input"]
+[connection signal="hiden" from="death_menu/CenterContainer/health/health/health_by_add" to="." method="hearth_is_hide"]
+[connection signal="pressed" from="death_menu/CenterContainer/health/health/health_by_add" to="." method="_on_health_by_add_pressed"]
+[connection signal="show_finish" from="death_menu/CenterContainer/health/health/health_by_add" to="." method="_on_health_by_add_show_finish"]
+[connection signal="pressed" from="death_menu/CenterContainer/health/health/health_by_coin" to="." method="_on_health_by_coin_pressed"]
+[connection signal="timeout" from="death_menu/CenterContainer/score/Timer" to="death_menu/CenterContainer/score" method="_on_Timer_timeout"]
+[connection signal="pressed" from="death_menu/CenterContainer/button/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="death_menu/CenterContainer/button/menu" to="." method="_on_menu_death_pressed"]
+
+[editable path="death_menu/CenterContainer/health/health/health_by_add"]
+
+[editable path="death_menu/CenterContainer/health/health/health_by_coin"]

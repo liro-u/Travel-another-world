@@ -1,0 +1,603 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Script/gros package/menu.gd" type="Script" id=1]
+[ext_resource path="res://Scene/background/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/font/aAssassinNinja.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Script/fonction/fundu.gd" type="Script" id=4]
+[ext_resource path="res://Scene/gui/bouton/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/button/button_shop.png" type="Texture" id=6]
+[ext_resource path="res://assets/button/button_task.png" type="Texture" id=7]
+[ext_resource path="res://assets/button/button_play.png" type="Texture" id=8]
+[ext_resource path="res://assets/button/button_parametre.png" type="Texture" id=9]
+[ext_resource path="res://assets/button/button_share.png" type="Texture" id=10]
+[ext_resource path="res://assets/button/button_credit.png" type="Texture" id=11]
+[ext_resource path="res://assets/load/background.png" type="Texture" id=12]
+[ext_resource path="res://Script/credit/credit.gd" type="Script" id=13]
+[ext_resource path="res://Scene/gui/scrolltxt/les mission.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Script/musique/menu_music.gd" type="Script" id=15]
+[ext_resource path="res://assets/musique/musiquefond.wav" type="AudioStream" id=16]
+[ext_resource path="res://Scene/gui/HSeparatorcredit.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/button/button_return_task_pressed.png" type="Texture" id=18]
+[ext_resource path="res://assets/button/button_return_task.png" type="Texture" id=19]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="InputEventKey" id=2]
+pressed = true
+scancode = 32
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 15
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="menu" type="Node2D" groups=[
+"menu",
+]]
+script = ExtResource( 1 )
+multiplicateurVitesse = 10
+
+[node name="Layers" type="Node2D" parent="."]
+
+[node name="back" type="Node2D" parent="Layers"]
+
+[node name="midle" type="Node2D" parent="Layers"]
+
+[node name="front" type="Node2D" parent="Layers"]
+
+[node name="front_cache" type="Node2D" parent="Layers"]
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="titre" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_left = 165.0
+margin_top = 47.0
+margin_right = 858.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 1 )
+text = "Travel Another
+World"
+align = 1
+valign = 1
+
+[node name="Fondu" type="Node" parent="VBoxContainer/CenterContainer/titre"]
+script = ExtResource( 4 )
+node = "menu"
+
+[node name="Timer" type="Timer" parent="VBoxContainer/CenterContainer/titre/Fondu"]
+one_shot = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 302.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer2"]
+margin_left = 147.0
+margin_top = 51.0
+margin_right = 877.0
+margin_bottom = 246.0
+custom_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 730.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="task" type="CenterContainer" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="task" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/task" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 7 )
+text = "Task"
+
+[node name="play" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 140.0
+margin_top = 0.0
+margin_right = 590.0
+margin_bottom = 100.0
+disabled = true
+shortcut_in_tooltip = false
+shortcut = SubResource( 3 )
+texture_normal = ExtResource( 8 )
+function = "button_show_finish"
+text = "Play"
+police_size = 60
+center = true
+
+[node name="shop" type="CenterContainer" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer"]
+margin_left = 630.0
+margin_right = 730.0
+margin_bottom = 100.0
+
+[node name="shop" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/shop" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 6 )
+function = "button2_show_finish"
+text = "Shop"
+
+[node name="coming soon" type="Label" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/shop/shop"]
+margin_left = 25.4559
+margin_top = 98.2878
+margin_right = 137.456
+margin_bottom = 118.288
+rect_rotation = -21.4668
+custom_fonts/font = SubResource( 4 )
+text = "coming soon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 120.0
+margin_right = 730.0
+margin_bottom = 195.0
+custom_constants/separation = 20
+
+[node name="param" type="VBoxContainer" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 0 )
+custom_constants/separation = 75
+
+[node name="param" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2/param" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 9 )
+text = "tools"
+police_size = 20
+adjust_bottom = true
+
+[node name="coming soon" type="Label" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2/param/param"]
+margin_left = 11.9412
+margin_top = 75.3381
+margin_right = 123.941
+margin_bottom = 95.3381
+rect_rotation = -21.4668
+custom_fonts/font = SubResource( 5 )
+text = "coming soon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="share" type="VBoxContainer" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 95.0
+margin_right = 170.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 0 )
+custom_constants/separation = 75
+
+[node name="share" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2/share" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 10 )
+text = "share"
+police_size = 20
+adjust_bottom = true
+
+[node name="coming soon" type="Label" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2/share/share"]
+margin_left = 11.6935
+margin_top = 76.7523
+margin_right = 123.693
+margin_bottom = 96.7523
+rect_rotation = -21.4668
+custom_fonts/font = SubResource( 5 )
+text = "coming soon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="credit" type="VBoxContainer" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 190.0
+margin_right = 265.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 0 )
+
+[node name="credit" parent="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2/credit" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 11 )
+text = "credit"
+police_size = 20
+adjust_bottom = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1024, 600 )
+texture = ExtResource( 12 )
+expand = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 994.0
+margin_bottom = 570.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+margin_right = 964.0
+margin_bottom = 406.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="credit" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer"]
+margin_right = 964.0
+margin_bottom = 410.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+alignment = 1
+
+[node name="personne1" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit"]
+margin_right = 952.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_constants/separation = 15
+alignment = 1
+
+[node name="name" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne1"]
+margin_right = 452.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "Noailles Valentin"
+align = 2
+valign = 1
+
+[node name="tiret" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne1"]
+margin_left = 467.0
+margin_right = 485.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "-"
+valign = 1
+
+[node name="role" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne1"]
+margin_left = 500.0
+margin_right = 952.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "developpeur"
+valign = 1
+
+[node name="HSeparator4" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit" instance=ExtResource( 17 )]
+margin_top = 40.0
+margin_right = 952.0
+margin_bottom = 90.0
+
+[node name="personne3" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit"]
+margin_top = 100.0
+margin_right = 952.0
+margin_bottom = 130.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="name" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne3"]
+margin_right = 452.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "Noailles Valentin"
+align = 2
+valign = 1
+
+[node name="tiret" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne3"]
+margin_left = 467.0
+margin_right = 485.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "-"
+valign = 1
+
+[node name="role" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne3"]
+margin_left = 500.0
+margin_right = 952.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "graphiste"
+valign = 1
+
+[node name="HSeparator2" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit" instance=ExtResource( 17 )]
+margin_top = 140.0
+margin_right = 952.0
+margin_bottom = 190.0
+
+[node name="personne2" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit"]
+margin_top = 200.0
+margin_right = 952.0
+margin_bottom = 230.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="name" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne2"]
+margin_right = 452.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "Testmen"
+align = 2
+valign = 1
+
+[node name="tiret" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne2"]
+margin_left = 467.0
+margin_right = 485.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "-"
+valign = 1
+
+[node name="role" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne2"]
+margin_left = 500.0
+margin_right = 952.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "composer"
+valign = 1
+
+[node name="musique" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit"]
+margin_top = 240.0
+margin_right = 952.0
+margin_bottom = 270.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "Spaceduck"
+align = 1
+valign = 1
+
+[node name="HSeparator3" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit" instance=ExtResource( 17 )]
+margin_top = 280.0
+margin_right = 952.0
+margin_bottom = 330.0
+
+[node name="personne4" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit"]
+margin_top = 340.0
+margin_right = 952.0
+margin_bottom = 370.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="name" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne4"]
+margin_right = 452.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "Vegasword"
+align = 2
+valign = 1
+
+[node name="tiret" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne4"]
+margin_left = 467.0
+margin_right = 485.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "-"
+valign = 1
+
+[node name="role" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit/personne4"]
+margin_left = 500.0
+margin_right = 952.0
+margin_bottom = 30.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "composer"
+valign = 1
+
+[node name="musique2" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/ScrollContainer/credit"]
+margin_top = 380.0
+margin_right = 952.0
+margin_bottom = 410.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 6 )
+text = "Aniways"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+margin_top = 410.0
+margin_right = 964.0
+margin_bottom = 540.0
+mouse_filter = 1
+custom_constants/margin_top = 30
+custom_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect/MarginContainer/VBoxContainer/MarginContainer"]
+margin_top = 30.0
+margin_right = 964.0
+margin_bottom = 130.0
+mouse_filter = 1
+
+[node name="return" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer/MarginContainer/CenterContainer"]
+margin_left = 257.0
+margin_right = 707.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/return"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 7 )
+text = "Return"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 600 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="les mission" parent="CenterContainer" instance=ExtResource( 14 )]
+margin_left = 200.0
+margin_top = 75.0
+margin_right = 824.0
+margin_bottom = 525.0
+rect_min_size = Vector2( 624, 450 )
+size_flags_horizontal = 3
+node_list_task_path = "../../../list_task"
+
+[node name="ScrollContainer" parent="CenterContainer/les mission/MarginContainer" index="0"]
+margin_bottom = 420.0
+
+[node name="VBoxContainer" parent="CenterContainer/les mission/MarginContainer/ScrollContainer" index="0"]
+margin_bottom = 390.0
+
+[node name="Control" parent="CenterContainer/les mission/MarginContainer2" index="0"]
+margin_bottom = 450.0
+
+[node name="return" type="TextureButton" parent="CenterContainer/les mission"]
+margin_left = -121.622
+margin_top = 16.9706
+margin_right = -21.6219
+margin_bottom = 116.971
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 18 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu_music" type="AudioStreamPlayer" parent="." groups=[
+"music",
+]]
+stream = ExtResource( 16 )
+volume_db = 15.0
+script = ExtResource( 15 )
+[connection signal="timeout" from="VBoxContainer/CenterContainer/titre/Fondu/Timer" to="VBoxContainer/CenterContainer/titre/Fondu" method="_on_Timer_timeout"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/task/task" to="." method="_on_task_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="show_finish" from="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/play" to="." method="_on_play_show_finish"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer2/credit/credit" to="TextureRect" method="start_show"]
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/return" to="TextureRect" method="start_hide"]
+[connection signal="pressed" from="CenterContainer/les mission/return" to="." method="_on_return_pressed"]
+
+[editable path="CenterContainer/les mission"]

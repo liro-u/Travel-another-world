@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Script/gros package/gamestart.gd" type="Script" id=1]
+[ext_resource path="res://Scene/background/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Script/pannel/generatePannel.gd" type="Script" id=3]
+[ext_resource path="res://Scene/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scene/pannel/zap/zapenvironment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Script/pannel/Camera2D.gd" type="Script" id=6]
+[ext_resource path="res://assets/musique/anyway.wav" type="AudioStream" id=7]
+[ext_resource path="res://Script/player/choose_player.gd" type="Script" id=8]
+[ext_resource path="res://Script/musique/game_music.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1088.05, 10 )
+
+[node name="game" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="momentané" type="Node2D" parent="."]
+
+[node name="backstart" type="Timer" parent="momentané"]
+wait_time = 0.001
+
+[node name="TimerAcceleration" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="Layers" type="Node2D" parent="."]
+
+[node name="back" type="Node2D" parent="Layers"]
+
+[node name="midle" type="Node2D" parent="Layers"]
+
+[node name="front" type="Node2D" parent="Layers"]
+
+[node name="pannel" type="Node2D" parent="Layers"]
+script = ExtResource( 3 )
+nbr_p_coin_max = 2
+
+[node name="player" type="Node2D" parent="Layers"]
+script = ExtResource( 8 )
+
+[node name="Player" parent="Layers/player" groups=[
+"animated",
+] instance=ExtResource( 4 )]
+position = Vector2( 8.556, 424.932 )
+collision_mask = 6
+
+[node name="floor and roof" type="Node2D" parent="Layers"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Layers/floor and roof"]
+collision_layer = 2147483650
+collision_mask = 0
+
+[node name="floor" type="CollisionShape2D" parent="Layers/floor and roof/StaticBody2D"]
+position = Vector2( 1000, 585.128 )
+shape = SubResource( 1 )
+
+[node name="roof" type="CollisionShape2D" parent="Layers/floor and roof/StaticBody2D"]
+position = Vector2( 1000, 11.844 )
+shape = SubResource( 1 )
+
+[node name="front_cache" type="Node2D" parent="Layers"]
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+process_mode = 0
+script = ExtResource( 6 )
+
+[node name="zapenvironment" parent="." instance=ExtResource( 5 )]
+
+[node name="game_music" type="AudioStreamPlayer" parent="." groups=[
+"music",
+]]
+stream = ExtResource( 7 )
+bus = "music"
+script = ExtResource( 9 )
+[connection signal="timeout" from="momentané/backstart" to="." method="gamestart"]
+[connection signal="timeout" from="TimerAcceleration" to="." method="acceleration"]
+[connection signal="alpha_down_finish" from="Layers/pannel" to="." method="_on_pannel_alpha_down_finish"]
+[connection signal="kill" from="Layers/player/Player" to="." method="_on_Player_kill"]
